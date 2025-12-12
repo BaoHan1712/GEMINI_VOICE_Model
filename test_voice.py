@@ -5,13 +5,10 @@ from google import genai
 from google.genai.types import LiveConnectConfig, PrebuiltVoiceConfig
 
 # --- CẤU HÌNH ---
-# Lưu ý: Tôi đã ẩn API Key của bạn để bảo mật. Hãy điền lại vào đây.
 API_KEY = "API_KEY_CỦA_BẠN" 
 OUTPUT_FILE = "gemini_voice.wav"
 
-# KHUYẾN NGHỊ: Hãy dùng "gemini-2.0-flash-exp" nếu cái 2.5 bên dưới báo lỗi
 MODEL_ID = "gemini-2.5-flash-native-audio-latest" 
-# MODEL_ID = "gemini-2.5-flash-native-audio-latest" 
 
 async def main():
     client = genai.Client(api_key=API_KEY)
@@ -30,7 +27,7 @@ async def main():
     try:
         async with client.aio.live.connect(model=MODEL_ID, config=config) as session:
             
-            # --- PHẦN THAY ĐỔI: NHẬP TỪ BÀN PHÍM ---
+            # --- NHẬP TỪ BÀN PHÍM ---
             print("\n" + "="*40)
             user_input = input("👉 Nhập câu hỏi của bạn: ")
             print("="*40 + "\n")
